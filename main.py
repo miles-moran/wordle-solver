@@ -20,7 +20,7 @@ def getWords():
             if (l not in counted):
                 score += letters[l]
             else:
-                score += letters[l] * 0
+                score += letters[l] * .3
             counted.append(l)
         rankings.append({
             'word': word,
@@ -42,6 +42,10 @@ def filterWords(words, greens, yellows, grays):
         for gray in grays:
             if gray in word['word'] and gray != '':
                 add = False
+        for yellow in yellows:
+            for y in yellow:
+                if y not in word['word']:
+                    add = False
         if add == True:
             filtered1.append(word)
 
@@ -68,12 +72,40 @@ def filterWords(words, greens, yellows, grays):
 words = getWords()
 # greens = ['', '', '', '', '']
 # yellows = [[''], [''], [''], [''], ['']]
-# grays = [[''], [''], [''], [''], ['']]
+# grays = []
 
 #ROBOT 215 4/6
-greens = ['', 'o', '', 'o', '']
-yellows = [['t'], ['t', 'r'], ['o', 't'], [''], ['r']]
-grays = ['a', 'n', 'e', 'i', 's', 'm']
+# greens = ['', 'o', '', 'o', '']
+# yellows = [['t'], ['t', 'r'], ['o', 't'], [''], ['r']]
+# grays = ['a', 'n', 'e', 'i', 's', 'm']
+
+#ROBOT 163 5/6
+# greens = ['', 'r', 'o', 'v', 'e']
+# yellows = [[''], [''], [''], ['r'], ['']]
+# grays = ['a', 't', 'n', 's', 'h', 'd', 'g']
+
+# greens = ['', 'r', 'i', 'n', '']
+# yellows = [['r', 'g'], [''], [''], [''], ['']]
+# grays = ['a', 't', 'o', 'e', 'u', 's', 'd']
+
+#HORSE 165 3/6
+# greens = ['', 'o', '', '', 'e']
+# yellows = [[''], [''], ['o'], ['s'], ['']]
+# grays = ['a', 't', 'n', 'h', 'r']
+
+#CHEAT 166 4/6
+# greens = ['', '', '', '', '']
+# yellows = [['a', 't', 'h'], ['t', 'e', 'a'], ['a', 't'], ['e'], ['e']]
+# grays = ['o', 'n', 'r', 's', 'd']
+
+#GRIME 167 5/6
+# greens = ['', 'r', 'i', 'm', 'e']
+# yellows = [[''], [''], [''], ['r'], ['']]
+# grays = ['a', 't', 'o', 'n', 's', 'h', 'p', 'd', 'c']
+
+greens = ['', '', '', '', '']
+yellows = [[''], [''], [''], [''], ['']]
+grays = []
 
 filtered = filterWords(words, greens, yellows, grays)
 # pprint(filtered)
