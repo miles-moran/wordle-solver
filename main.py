@@ -15,7 +15,7 @@ def getWords():
     for word in words['words']:
         score = 0
         counted = []
-        print(word)
+        # print(word)
         for l in word:
             if (l not in counted):
                 score += letters[l]
@@ -30,7 +30,8 @@ def getWords():
     return rankings
 
 def filterWords(words, greens, yellows, grays):
-    filtered = []
+    filtered1 = []
+    filtered2 = []
     for i in range(len(greens)):
         green = greens[i]
         if green != '':
@@ -38,10 +39,16 @@ def filterWords(words, greens, yellows, grays):
 
     for word in words:
         add = True
+        for gray in grays:
+            if gray in word['word'] and gray != '':
+                add = False
+        if add == True:
+            filtered1.append(word)
+
+    for word in filtered1:
+        add = True
         for i in range(5):
             letter = word['word'][i]
-            if letter in grays:
-                break
             green = greens[i]
             if green != '':
                 if letter != green:
@@ -51,9 +58,9 @@ def filterWords(words, greens, yellows, grays):
                 if y == letter:
                     add = False
         if add == True:
-            filtered.append(word)
+            filtered2.append(word)
 
-    return filtered
+    return filtered2
 
 #frequency of 5 letter words not all words
 
@@ -63,16 +70,17 @@ words = getWords()
 # yellows = [[''], [''], [''], [''], ['']]
 # grays = [[''], [''], [''], [''], ['']]
 
-greens = ['', '', '', '', '']
-yellows = [[''], [''], [''], [''], ['']]
-grays = ['']
+#ROBOT 215 4/6
+greens = ['', 'o', '', 'o', '']
+yellows = [['t'], ['t', 'r'], ['o', 't'], [''], ['r']]
+grays = ['a', 'n', 'e', 'i', 's', 'm']
 
 filtered = filterWords(words, greens, yellows, grays)
 # pprint(filtered)
 
 pprint(filtered[:50])
 
-print(len(filtered))
+# print(len(filtered))
 
 
     
