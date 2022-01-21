@@ -132,7 +132,7 @@ def solve(solution):
         if len(suggestions) == 1:
             answer = suggestions[0]
         guess = suggestions[0]['word']
-
+        print(guess)
         for i in range(5):
             letter = guess[i]
             if letter not in solution:
@@ -146,22 +146,22 @@ def solve(solution):
     return counter
 
 
-words = []
-with open('five-letter-words.json', "r") as fw:
-    words = json.load(fw)
+# words = []
+# with open('five-letter-words.json', "r") as fw:
+#     words = json.load(fw)
 
-guesses = 0
-puzzles = 0
-for word in words['words'][:500]:
-    score = solve(word)
-    guesses += score
-    puzzles += 1
-
-
-print('guess average')
-print(guesses / puzzles)
+# guesses = 0
+# puzzles = 0
+# for word in words['words'][:500]:
+#     score = solve(word)
+#     guesses += score
+#     puzzles += 1
 
 
+# print('guess average')
+# print(guesses / puzzles)
+
+solve('prick')
 
 
 
